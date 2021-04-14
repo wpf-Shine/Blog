@@ -11,5 +11,8 @@
 
 Route::group('admin', function () {
     Route::rule('/', 'admin/index/login');
+    Route::rule('register', 'admin/index/register');
+    Route::rule('forget', 'admin/index/forget');
+    Route::rule('index', 'admin/home/index');
 });
 

@@ -70,7 +70,7 @@ return [
     // 兼容PATH_INFO获取
     'pathinfo_fetch'         => ['ORIG_PATH_INFO', 'REDIRECT_PATH_INFO', 'REDIRECT_URL'],
     // pathinfo分隔符
-    'pathinfo_depr'          => '',
+    'pathinfo_depr'          => '/',
     // URL伪静态后缀
     'url_html_suffix'        => '',
     // URL普通方式参数 用于自动生成
@@ -78,7 +78,7 @@ return [
     // URL参数方式 0 按名称成对解析 1 按顺序解析
     'url_param_type'         => 0,
     // 路由使用完整匹配
-    'route_complete_match'   => false,
+    'route_complete_match'   => true,
     // 是否强制使用路由
     'url_route_must'         => true,
     // 域名部署

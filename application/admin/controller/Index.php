@@ -2,10 +2,18 @@
 
 namespace app\admin\controller;
 
-use think\Controller;
 
-class Index extends Controller
+
+class Index extends Base
 {
+    //重复登录过滤
+    public function initialize()
+    {
+        if (session('?admin.id')) {
+            $this->redirect('admin/home/index');
+        }
+    }
+
     //后台登录
     public function login()
     {

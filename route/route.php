@@ -14,5 +14,11 @@ Route::group('admin', function () {
     Route::rule('register', 'admin/index/register');
     Route::rule('forget', 'admin/index/forget');
     Route::rule('index', 'admin/home/index');
+    Route::rule('loginout', 'admin/home/loginout');
+    Route::rule('catelist','admin/cate/list');
+    Route::rule('cateadd', 'admin/cate/add');
+    Route::rule('catesort', 'admin/cate/sort');
+    Route::rule('cateedit/[:id]', 'admin/cate/edit'); 
+    Route::rule('catedel', 'admin/cate/del');
 });
 

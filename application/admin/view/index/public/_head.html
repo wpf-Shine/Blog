@@ -23,7 +23,7 @@
                 <!-- Navbar Barnd -->
                 <div class="navbar-header pull-left">
                     <a href="#" class="navbar-brand">
-                        <small style="line-height: 40px;">W管理后台</small>
+                        <small style="line-height: 40px;">W后台管理平台</small>
                     </a>
                 </div>
                 <!-- /Navbar Barnd -->
@@ -42,7 +42,7 @@
                                         <img src="/static/admin/img/logo.jpg">
                                     </div>
                                     <section>
-                                        <h2><span class="profile"><span>梦中程序员</span></span></h2>
+                                        <h2><span class="profile"><span>{:session('admin.nickname')}</span></span></h2>
                                     </section>
                                 </a>
                                 <!--Login Area Dropdown-->
@@ -80,7 +80,7 @@
                                     </li>
                                     <!--/Theme Selector Area-->
                                     <li class="dropdown-footer">
-                                        <a href="login.html">退出</a>
+                                        <a href="#" id="loginout">退出</a>
                                     </li>
                                 </ul>
                                 <!--/Login Area Dropdown-->

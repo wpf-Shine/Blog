@@ -8,7 +8,7 @@ class Article extends Validate
 {
 	//验证规则
 	protected $rule = [
-		'title|文章标题' => 'require|unique:article',
+		'title|文章标题' => 'require',
         'tags|标签' => 'require',
         'cate_id|所属栏目' => 'require',
         'desc|文章概要' => 'require',

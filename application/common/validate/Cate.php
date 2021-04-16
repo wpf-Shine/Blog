@@ -7,7 +7,7 @@ use think\Validate;
 class Cate extends Validate
 {
 	protected $rule = [
-		'catename|栏目名称' => 'require|unique:cate',
+		'catename|栏目名称' => 'require',
 		'sort|排序' => 'require|number'
 	];
 

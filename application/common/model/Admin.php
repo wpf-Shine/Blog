@@ -10,6 +10,11 @@ class Admin extends Model
     //软删除
     use SoftDelete;
 
+    public function cate()
+    {
+        return $this->hasMany('Cate');
+    }
+
     //只读字段 不允许修改
     protected $readonly = ['email'];
 

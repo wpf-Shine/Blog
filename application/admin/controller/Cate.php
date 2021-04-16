@@ -51,8 +51,8 @@ class Cate extends Base
     {
         if(request()->isAjax()){
             $data = [
-                'id' => input('id'),
-                'catename' => input('catename'),
+                'id' => input('post.id'),
+                'catename' => input('post.catename'),
             ];
             $result = model('Cate')->edit($data);
             if($result == 1){
@@ -62,7 +62,7 @@ class Cate extends Base
             }
         }
 
-        $cateInfo = model('Cate')->find(input('id'));    //bug待修改  修改数据id不对应
+        $cateInfo = model('Cate')->find([input('id')]);    
         //模板变量
         $viewData = [
             'cateInfo' => $cateInfo
@@ -74,11 +74,11 @@ class Cate extends Base
     //栏目删除
     public function del()
     {
-        $cateInfo = model('Cate')->find(input('post.id'));
-        $result = $cateInfo->delete();
-        if($result){
+        $cateInfo = model('Cate')->with('article')->find(input('post.id'));
+        $result = $cateInfo->together('Article')->delete();
+        if ($result) {
             $this->success('栏目删除成功！', 'admin/cate/list');
-        }else{
+        }else {
             $this->error('栏目删除失败！');
         }
     }

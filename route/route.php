@@ -15,10 +15,17 @@ Route::group('admin', function () {
     Route::rule('forget', 'admin/index/forget');
     Route::rule('index', 'admin/home/index');
     Route::rule('loginout', 'admin/home/loginout');
+    //栏目管理路由
     Route::rule('catelist','admin/cate/list');
     Route::rule('cateadd', 'admin/cate/add');
     Route::rule('catesort', 'admin/cate/sort');
     Route::rule('cateedit/[:id]', 'admin/cate/edit'); 
     Route::rule('catedel', 'admin/cate/del');
+    //文章管理路由
+    Route::rule('articlelist', 'admin/article/list');
+    Route::rule('articleadd', 'admin/article/add');
+    Route::rule('articletop', 'admin/article/top');
+    Route::rule('articleedit/[:id]', 'admin/article/edit');
+    Route::rule('articledel', 'admin/article/del');
 });
 

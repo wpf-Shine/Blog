@@ -74,8 +74,21 @@ class Cate extends Base
     //栏目删除
     public function del()
     {
-        $cateInfo = model('Cate')->with('article')->find(input('post.id'));
-        $result = $cateInfo->together('Article')->delete();
+        // $cateInfo = model('Cate')->with('article')->find(input('post.id'));
+        // $result = $cateInfo->together('article')->delete();
+        $id = input('post.id');
+        $articleInfo = model('Article')->where('cate_id',$id)->select();
+        $cateInfo = model('Cate')->where('id',$id)->find();
+        $result = $cateInfo->delete();
+        foreach ($articleInfo as $key => $value) {
+            if ($cateInfo->id == $value->cate_id) {
+                // 栏目与文章拥有共同数据,执行删除文章
+                $artRes = $value->delete();
+                if (!$artRes) {
+                    return '删除文章失败';
+                }
+            }
+        }
         if ($result) {
             $this->success('栏目删除成功！', 'admin/cate/list');
         }else {

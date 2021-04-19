@@ -13,7 +13,7 @@ class Cate extends Model
     //关联文章
     public function article()
     {
-        return $this->hasMany('Article', 'cate_id', 'id');
+        return $this->hasMany('Article', 'cate_id');
     }
 
     //栏目添加

@@ -27,5 +27,10 @@ Route::group('admin', function () {
     Route::rule('articletop', 'admin/article/top');
     Route::rule('articleedit/[:id]', 'admin/article/edit');
     Route::rule('articledel', 'admin/article/del');
+    //会员管理路由
+    Route::rule('memberlist', 'admin/member/lists');
+    Route::rule('memberadd', 'admin/member/add');
+    Route::rule('memberedit/[:id]', 'admin/member/edit');
+    Route::rule('memberdel', 'admin/member/del');
 });
 

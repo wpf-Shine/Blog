@@ -20,29 +20,35 @@
 
         $(function(){
             $('#loginout').click(function(){
-                $.ajax({
-                    url:"{:url('admin/home/loginout')}",
-                    type:'post',
-                    dataType:'json',
-                    success:function(data){
-                        if(data.code == 1){
-                            layer.msg(data.msg, {
-                                icon:6,
-                                time:2000
-                            }, function(){
-                                location.href = "{:url('/admin')}";
-                            });
-                        }else{
-                            layer.open({
-                                title:'退出失败！',
-                                content:data.msg,
-                                icon:5,
-                                anim:6
-                            })
+                layer.confirm('确定退出吗？', {
+                title:'退出登录',
+                icon:3
+                }, function(index){
+                    layer.close(index);
+                    $.ajax({
+                        url:"{:url('admin/home/loginout')}",
+                        type:'post',
+                        dataType:'json',
+                        success:function(data){
+                            if(data.code == 1){
+                                layer.msg(data.msg, {
+                                    icon:6,
+                                    time:2000
+                                }, function(){
+                                    location.href = "{:url('/admin')}";
+                                });
+                            }else{
+                                layer.open({
+                                    title:'退出失败！',
+                                    content:data.msg,
+                                    icon:5,
+                                    anim:6
+                                });
+                            }
                         }
-                    }
+                    });
                 });
-                return false;
+            return false;
             });
         })
     </script>

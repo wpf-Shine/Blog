@@ -32,5 +32,11 @@ Route::group('admin', function () {
     Route::rule('memberadd', 'admin/member/add');
     Route::rule('memberedit/[:id]', 'admin/member/edit');
     Route::rule('memberdel', 'admin/member/del');
+    //管理员管理路由
+    Route::rule('adminlist', 'admin/admin/lists');
+    Route::rule('adminadd', 'admin/admin/add');
+    Route::rule('adminstatus', 'admin/admin/status');
+    Route::rule('adminedit/[:id]', 'admin/admin/edit');
+    Route::rule('admindel', 'admin/admin/del');
 });
 

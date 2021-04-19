@@ -58,4 +58,42 @@ class Admin extends Model
     		return '注册失败！';
     	}
     }
+
+    //添加管理员
+    public function add($data){
+        $validate = new \app\common\validate\Admin();
+        if(!$validate->scene('add')->check($data)){
+            return $validate->getError();
+        }
+        $result = $this->allowField(true)->save($data);
+        if($result){
+            return 1;
+        }else{
+            return '管理员添加失败！';
+        }
+    }
+
+    //管理员信息编辑
+    public function edit($data){
+        $validate = new \app\common\validate\Admin();
+        if(!$validate->scene('edit')->check($data)){
+            return $validate->getError();
+        }
+        $adminInfo = $this->find($data['id']);
+        if($data['oldpass'] != $adminInfo['password']){
+            return '原密码不正确！';
+        }
+        if($data['newpass'] == null){
+            $data['newpass'] = $adminInfo['password'];
+        }
+        $adminInfo->password = $data['newpass'];
+        $adminInfo->nickname = $data['nickname'];
+        $adminInfo->is_super = $data['is_super'];
+        $result = $adminInfo->save();
+        if($result){
+            return 1;
+        }else{
+            return '管理员信息修改失败！';
+        }
+    }
 }

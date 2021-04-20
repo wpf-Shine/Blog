@@ -7,7 +7,7 @@ class Admin extends Base
     //管理员列表
     public function lists()
     {
-    	$admins = model('Admin')->order(['is_super'=>'asc', 'status'=>'asc'])->paginate(2);
+    	$admins = model('Admin')->order(['is_super'=>'asc', 'status'=>'asc'])->paginate(10);
     	$viewData = [
     		'admins' => $admins
     	];

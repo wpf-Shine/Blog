@@ -38,5 +38,10 @@ Route::group('admin', function () {
     Route::rule('adminstatus', 'admin/admin/status');
     Route::rule('adminedit/[:id]', 'admin/admin/edit');
     Route::rule('admindel', 'admin/admin/del');
+    //评论管理路由
+    Route::rule('commemt', 'admin/comment/lists');
+    Route::rule('commemtdel', 'admin/comment/del');
+    //系统设置路由
+    Route::rule('set', 'admin/system/set');
 });
 

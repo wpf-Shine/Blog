@@ -87,6 +87,20 @@ class Cate extends Base
                 if (!$artRes) {
                     return '删除文章失败';
                 }
+
+                //评论数据
+                $comInfo = model('Comment')->where('article_id',$value->id)->select();
+                // 遍历评论数据,如果评论在删除文章中,一起删除
+                foreach ($comInfo as $key => $c) {
+                    // $c 是评论数据
+                    if ($c->article_id == $value->id) {
+                        // 执行删除评论
+                        $comRes = $c->delete();
+                        if (!$comRes) {
+                            return '删除评论失败';
+                        }
+                    }
+                }
             }
         }
         if ($result) {

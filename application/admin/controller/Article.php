@@ -90,8 +90,18 @@ class Article extends Base
     //文章删除
     public function del()
     {
-        $articleInfo = model('Article')->find(input('post.id'));
+        $id = input('post.id');
+        $articleInfo = model('Article')->where('id', $id)->find();
+        $commentInfo = model('Comment')->where('article_id', $id)->select();
         $result = $articleInfo->delete();
+        foreach ($commentInfo as $key => $value) {
+            if ($articleInfo->id == $value->article_id) {
+                $comRes = $value->delete();
+                if (!$comRes) {
+                    return '删除评论失败！';
+                }
+            }
+        }
         if($result){
             $this->success('文章删除成功！', 'admin/article/list');
         }else{

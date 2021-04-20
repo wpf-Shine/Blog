@@ -64,8 +64,18 @@ class Member extends Base
     //会员删除
     public function del()
     {
-    	$memberInfo = model('Member')->find(input('post.id'));
+        $id = input('post.id');
+    	$memberInfo = model('Member')->where('id', $id)->find();
+        $commentInfo = model('Comment')->where('member_id', $id)->select();
     	$result = $memberInfo->delete();
+        foreach ($commentInfo as $key => $value) {
+            if ($memberInfo->id == $value->member_id) {
+                $comRes = $value->delete();
+                if (!$comRes) {
+                    return '删除评论失败！';
+                }
+            }
+        }
     	if($result){
     		$this->success('会员删除成功！', 'admin/member/lists');
     	}else{
